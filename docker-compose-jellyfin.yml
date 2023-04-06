@@ -1,0 +1,19 @@
+---
+version: "2.1"
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Paris
+    volumes:
+      - /opt/docker/jellyfin/config:/config
+      - /mnt/nfs/animes:/data/animes
+      - /mnt/nfs/movies:/data/movies
+      - /mnt/tmp:/data/tmp
+      - /mnt/nfs/series:/data/series
+    ports:
+      - 8096:8096
+    restart: unless-stopped
