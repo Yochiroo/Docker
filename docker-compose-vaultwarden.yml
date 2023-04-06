@@ -1,0 +1,17 @@
+version: "2"
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    volumes:
+      - /apps/vaultwarden/bw-data:/data
+      - /etc/localtime:/etc/localtime
+    environment:
+      WEBSOCKET_ENABLED: 'true' # Required to use websockets
+      SIGNUPS_ALLOWED: 'true'   # set to false to disable signups
+      TZ: 'Europe/Paris'
+      ADMIN_TOKEN: 'Fck706kv!!'
+    ports:
+      - 3012:3012
+      - 8080:80 # Facultatif avec Traefik
